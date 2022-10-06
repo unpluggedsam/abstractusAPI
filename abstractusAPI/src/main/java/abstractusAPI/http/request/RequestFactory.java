@@ -17,12 +17,9 @@ import java.util.concurrent.CompletableFuture;
 public class RequestFactory {
 
     private final OkHttpClient client = new OkHttpClient();
-    private final UUID apiKey;
-
     private RequestValidator validator;
 
-    protected RequestFactory(UUID apiKey) {
-        this.apiKey = apiKey;
+    protected RequestFactory() {
         this.validator = new BasicRequestValidator();
     }
 
@@ -31,9 +28,7 @@ public class RequestFactory {
     }
 
     public CompletableFuture<JSONObject> send(Query query) {
-        Request request = new Request.Builder()
-                .url(query.createRequest().addQueryParameter("key", apiKey.toString()).build())
-                .build();
+        Request request = new Request.Builder().build());
 
         return CompletableFuture.supplyAsync(() -> {
             try {

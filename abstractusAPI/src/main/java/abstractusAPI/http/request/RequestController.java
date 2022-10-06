@@ -14,16 +14,15 @@ import java.util.concurrent.CompletableFuture;
  */
 public class RequestController {
 
-    private final UUID apiKey;
+    private UUID apiKey;
     private final String origin;
     private final String hostname;
     private final RequestFactory requestFactory;
 
-    public RequestController(UUID apiKey, String origin, String hostname) {
-        this.apiKey = apiKey;
+    public RequestController(String origin, String hostname) {
         this.origin = origin;
         this.hostname = hostname;
-        this.requestFactory = new RequestFactory(apiKey);
+        this.requestFactory = new RequestFactory();
     }
 
     public CompletableFuture<JSONObject> sendRequest(String endpoint, String parameterKey, String parameterValue) {
