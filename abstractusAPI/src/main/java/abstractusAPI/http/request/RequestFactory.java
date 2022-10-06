@@ -25,7 +25,7 @@ public class RequestFactory {
 
     protected RequestFactory(UUID apiKey) {
         this.apiKey = apiKey;
-        this.validator = new BasicRequestValidator()
+        this.validator = new BasicRequestValidator();
     }
 
     public void setRequestValidator(RequestValidator validator) {
