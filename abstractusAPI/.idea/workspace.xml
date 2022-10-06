@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1ed53b89-3a0b-4d20-b2f0-8719403d29f2" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/abstractusAPI/http/query/Query.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/abstractusAPI/http/query/Query.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/abstractusAPI/http/request/RequestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/abstractusAPI/http/request/RequestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/abstractusAPI/http/request/RequestFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/abstractusAPI/http/request/RequestFactory.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
