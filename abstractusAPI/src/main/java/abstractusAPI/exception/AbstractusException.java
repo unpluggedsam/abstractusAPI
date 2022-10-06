@@ -7,8 +7,11 @@ public class AbstractusException extends RuntimeException {
 
     private final String message;
 
-    public AbstractusException(String message) {
+    private final int errorCode;
+
+    public AbstractusException(String message, int errorCode) {
         this.message = message;
+        this.errorCode = errorCode;
     }
 
     @Override
@@ -16,8 +19,12 @@ public class AbstractusException extends RuntimeException {
         return message;
     }
 
+    public int getErrorCode() {
+        return errorCode;
+    }
+
     @Override
     public String toString() {
-        return "API exception: " + message;
+        return "API error. Code: " + errorCode + ". Response: " + message;
     }
 }
