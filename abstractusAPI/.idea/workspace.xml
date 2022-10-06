@@ -5,11 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1ed53b89-3a0b-4d20-b2f0-8719403d29f2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/abstractusAPI/http/request/BasicRequestValidator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/abstractusAPI/exception/server_error/VariantAlsoNegotiatesException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/abstractusAPI/exception/server_error/VariantAlsoNegotiatesException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/abstractusAPI/http/request/RequestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/abstractusAPI/http/request/RequestController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/abstractusAPI/http/request/RequestFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/abstractusAPI/http/request/RequestFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/abstractusAPI/http/request/RequestValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/abstractusAPI/http/request/RequestValidator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,13 +33,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "last_opened_file_path": "C:/Java Projects/GitHub/abstractusAPI/abstractusAPI"
   }
-}</component>
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
