@@ -1,8 +1,6 @@
 package abstractusAPI.http.request;
 
 import abstractusAPI.http.query.Query;
-import abstractusAPI.http.query.QueryURL;
-import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
