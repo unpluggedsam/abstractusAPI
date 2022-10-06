@@ -25,6 +25,11 @@ public class RequestFactory {
 
     protected RequestFactory(UUID apiKey) {
         this.apiKey = apiKey;
+        this.validator = new BasicRequestValidator()
+    }
+
+    public void setRequestValidator(RequestValidator validator) {
+        this.validator = validator;
     }
 
     public CompletableFuture<JSONObject> send(Query query) {
@@ -35,8 +40,7 @@ public class RequestFactory {
         return CompletableFuture.supplyAsync(() -> {
             try {
                 Response response = client.newCall(request).execute();
-
-                if(validator.validate()) {
+                if(validator.validate(response, new JSONObject(response.body().string()))) {
                     return new JSONObject(Objects.requireNonNull(response.body()).string());
                 } else {
                     CompletableFuture.failedFuture(new Throwable("Failure"));
