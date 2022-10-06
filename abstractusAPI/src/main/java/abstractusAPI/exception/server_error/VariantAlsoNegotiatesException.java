@@ -7,7 +7,7 @@ import abstractusAPI.exception.AbstractusException;
  * engage in transparent content negotiation itself, and is therefore not a proper end point in the negotiation process.</a>"
  */
 public class VariantAlsoNegotiatesException extends AbstractusException {
-    public VariantAlsoNegotiatesException(String message, int errorCode) {
+    public VariantAlsoNegotiatesException(String message) {
         super(message, 506);
     }
 }
