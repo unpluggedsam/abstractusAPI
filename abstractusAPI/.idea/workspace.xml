@@ -5,34 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1ed53b89-3a0b-4d20-b2f0-8719403d29f2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/abstractusAPI/exception/client_error/BadRequestException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/abstractusAPI/exception/client_error/ConflictException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/abstractusAPI/exception/client_error/ExpectationFailedException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/abstractusAPI/exception/client_error/FailedDependencyException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/abstractusAPI/exception/client_error/ForbiddenException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/abstractusAPI/exception/client_error/GoneException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/abstractusAPI/exception/client_error/LengthRequiredException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/abstractusAPI/exception/client_error/LockedException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/abstractusAPI/exception/client_error/MethodNotAllowedException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/abstractusAPI/exception/client_error/MisdirectedRequestException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/abstractusAPI/exception/client_error/NotAcceptableException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/abstractusAPI/exception/client_error/NotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/abstractusAPI/exception/client_error/PayloadTooLargeException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/abstractusAPI/exception/client_error/PaymentRequiredException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/abstractusAPI/exception/client_error/PreconditionFailedException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/abstractusAPI/exception/client_error/PreconditionRequiredException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/abstractusAPI/exception/client_error/ProxyAuthenticationRequiredException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/abstractusAPI/exception/client_error/RangeNotSatisfiableException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/abstractusAPI/exception/client_error/RateLimitingException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/abstractusAPI/exception/client_error/RequestHeaderFieldsTooLargeException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/abstractusAPI/exception/client_error/RequestTimeoutException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/abstractusAPI/exception/client_error/TeapotException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/abstractusAPI/exception/client_error/TooEarlyException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/abstractusAPI/exception/client_error/URITooLongException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/abstractusAPI/exception/client_error/UnauthorizedException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/abstractusAPI/exception/client_error/UnprocessableEntityException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/abstractusAPI/exception/client_error/UnsupportedMediaTypeException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/abstractusAPI/exception/client_error/UpgradeRequiredException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/abstractusAPI/exception/server_error/BadGatewayException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/abstractusAPI/exception/server_error/GatewayTimeoutException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/abstractusAPI/exception/server_error/HTTPVersionNotSupportedException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/abstractusAPI/exception/server_error/InsufficientStorageException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/abstractusAPI/exception/server_error/InternalServerErrorException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/abstractusAPI/exception/server_error/LoopDetectedException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/abstractusAPI/exception/server_error/NotImplementedException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/abstractusAPI/exception/server_error/ServiceUnavailableException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/abstractusAPI/exception/server_error/VariantAlsoNegotiatesException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
