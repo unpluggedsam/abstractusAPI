@@ -16,7 +16,7 @@ import com.squareup.okhttp.Request;
 public class Query {
 
     @SuppressWarnings("OptionalUsedAsFieldOrParameterType")
-    private final Optional<QueryParameter[]> queryParameterList;
+    private Optional<List<QueryParameter>> queryParameterList;
     private final URL url;
 
     /**
@@ -35,15 +35,23 @@ public class Query {
     public HttpUrl.Builder createRequest() {
         HttpUrl.Builder builder = Objects.requireNonNull(HttpUrl.get(url)
                 .newBuilder());
-        queryParameterList.ifPresent(queryParameters -> Arrays.stream(queryParameters).toList()
+        queryParameterList.ifPresent(queryParameters -> queryParameters.stream()
                 .forEach(parameter -> builder.addQueryParameter(parameter.key(),
                         parameter.value())));
         return builder;
     }
 
     public Query(URL url, QueryParameter... queryParameterList) {
-        this.queryParameterList = Optional.ofNullable(queryParameterList);
+        this.queryParameterList = Optional.ofNullable(List.of(queryParameterList));
         this.url = url;
+    }
+
+    public void addParameter(QueryParameter... parameters) {
+        if(queryParameterList.isPresent()) {
+            Arrays.stream(parameters).toList().forEach(queryParameter -> queryParameterList.get().add(queryParameter));
+        } else {
+            queryParameterList = Optional.of(Arrays.stream(parameters).toList());
+        }
     }
 
     @Override

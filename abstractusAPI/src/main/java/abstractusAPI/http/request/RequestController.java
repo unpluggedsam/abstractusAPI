@@ -6,6 +6,7 @@ import org.json.JSONObject;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 
@@ -25,11 +26,21 @@ public class RequestController {
         this.requestFactory = new RequestFactory();
     }
 
-    public CompletableFuture<JSONObject> sendRequest(String endpoint, String parameterKey, String parameterValue) {
+    public CompletableFuture<JSONObject> sendRequest(String endpoint, QueryParameter... params) {
         try {
             URL url = new URL(origin, hostname, endpoint);
-            QueryParameter params = new QueryParameter(parameterKey, parameterValue);
             Query query = new Query(url, params);
+
+            return requestFactory.send(query);
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public CompletableFuture<JSONObject> sendRequest(String endpoint) {
+        try {
+            URL url = new URL(origin, hostname, endpoint);
+            Query query = new Query(url, setAPIKeyIfPresent());
             return requestFactory.send(query);
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
@@ -43,5 +54,17 @@ public class RequestController {
      */
     public void setRequestValidator(RequestValidator requestValidator) {
         requestFactory.setRequestValidator(requestValidator);
+    }
+
+    public void setApiKey(UUID apiKey) {
+        this.apiKey = apiKey;
+    }
+
+    private QueryParameter setAPIKeyIfPresent() {
+        if(apiKey != null) {
+            return new QueryParameter("key", apiKey.toString());
+        } else {
+            return null;
+        }
     }
 }
