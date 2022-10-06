@@ -28,7 +28,7 @@ public class RequestFactory {
     }
 
     public CompletableFuture<JSONObject> send(Query query) {
-        Request request = new Request.Builder().build());
+        Request request = new Request.Builder().build();
 
         return CompletableFuture.supplyAsync(() -> {
             try {
