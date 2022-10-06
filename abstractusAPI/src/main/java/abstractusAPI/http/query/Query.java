@@ -17,7 +17,7 @@ public class Query {
 
     @SuppressWarnings("OptionalUsedAsFieldOrParameterType")
     private final Optional<QueryParameter[]> queryParameterList;
-    private final URL url;
+    private final QueryURL url;
 
     /**
      * Begins building a new HTTP request that can be used to make the query.
@@ -33,7 +33,7 @@ public class Query {
      * API credentials.
      */
     public HttpUrl.Builder createRequest() {
-        HttpUrl.Builder builder = Objects.requireNonNull(HttpUrl.get(url)
+        HttpUrl.Builder builder = Objects.requireNonNull(HttpUrl.get(url.getURL())
                 .newBuilder());
         queryParameterList.ifPresent(queryParameters -> Arrays.stream(queryParameters).toList()
                 .forEach(parameter -> builder.addQueryParameter(parameter.key(),
@@ -41,7 +41,7 @@ public class Query {
         return builder;
     }
 
-    public Query(URL url, QueryParameter... queryParameterList) {
+    public Query(QueryURL url, QueryParameter... queryParameterList) {
         this.queryParameterList = Optional.ofNullable(queryParameterList);
         this.url = url;
     }
