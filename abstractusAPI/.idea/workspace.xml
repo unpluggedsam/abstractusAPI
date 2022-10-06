@@ -4,19 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1ed53b89-3a0b-4d20-b2f0-8719403d29f2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/abstractusAPI/exception/server_error/BadGatewayException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/abstractusAPI/exception/server_error/GatewayTimeoutException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/abstractusAPI/exception/server_error/HTTPVersionNotSupportedException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/abstractusAPI/exception/server_error/InsufficientStorageException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/abstractusAPI/exception/server_error/InternalServerErrorException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/abstractusAPI/exception/server_error/LoopDetectedException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/abstractusAPI/exception/server_error/NotImplementedException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/abstractusAPI/exception/server_error/ServiceUnavailableException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/abstractusAPI/exception/server_error/VariantAlsoNegotiatesException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="1ed53b89-3a0b-4d20-b2f0-8719403d29f2" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
