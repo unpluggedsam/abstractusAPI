@@ -2,6 +2,7 @@ package abstractusAPI.exception;
 
 /**
  * An abstraction over all exceptions that can be returned from an API.
+ * Keeps hold of the response string and status code returned from the API.
  */
 public class AbstractusException extends RuntimeException {
 
