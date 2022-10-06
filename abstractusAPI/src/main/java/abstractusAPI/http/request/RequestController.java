@@ -30,7 +30,7 @@ public class RequestController {
         try {
             URL url = new URL(origin, hostname, endpoint);
             Query query = new Query(url, params);
-
+            query.addParameter(setAPIKeyIfPresent());
             return requestFactory.send(query);
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
@@ -40,7 +40,8 @@ public class RequestController {
     public CompletableFuture<JSONObject> sendRequest(String endpoint) {
         try {
             URL url = new URL(origin, hostname, endpoint);
-            Query query = new Query(url, setAPIKeyIfPresent());
+            Query query = new Query(url);
+            query.addParameter(setAPIKeyIfPresent());
             return requestFactory.send(query);
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
