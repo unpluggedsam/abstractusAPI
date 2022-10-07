@@ -1,10 +1,7 @@
 package abstractusAPI.http.query;
 
 import java.net.URL;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
 
 import com.squareup.okhttp.HttpUrl;
 import com.squareup.okhttp.Request;
@@ -16,7 +13,7 @@ import com.squareup.okhttp.Request;
 public class Query {
 
     @SuppressWarnings("OptionalUsedAsFieldOrParameterType")
-    private Optional<List<QueryParameter>> queryParameterList;
+    private List<Optional<QueryParameter>> queryParameterList;
     private final URL url;
 
     /**
@@ -35,23 +32,21 @@ public class Query {
     public HttpUrl.Builder createRequest() {
         HttpUrl.Builder builder = Objects.requireNonNull(HttpUrl.get(url)
                 .newBuilder());
-        queryParameterList.ifPresent(queryParameters -> queryParameters.stream()
-                .forEach(parameter -> builder.addQueryParameter(parameter.key(),
-                        parameter.value())));
+        queryParameterList.forEach(queryParameters -> queryParameters.ifPresent(param -> {
+            builder.addQueryParameter(param.key(), param.value());
+        }));
         return builder;
     }
 
     public Query(URL url, QueryParameter... queryParameterList) {
-        this.queryParameterList = Optional.ofNullable(List.of(queryParameterList));
+        this.queryParameterList = new ArrayList(Arrays.stream(queryParameterList).toList());
         this.url = url;
     }
 
     public void addParameter(QueryParameter... parameters) {
-        if(queryParameterList.isPresent()) {
-            Arrays.stream(parameters).toList().forEach(queryParameter -> queryParameterList.get().add(queryParameter));
-        } else {
-            queryParameterList = Optional.of(Arrays.stream(parameters).toList());
-        }
+        Arrays.stream(parameters).sequential().forEach(param -> {
+            queryParameterList.add(Optional.ofNullable(param));
+        });
     }
 
     @Override
@@ -71,7 +66,7 @@ public class Query {
                 return false;
             }
 
-            return Arrays.equals(queryParameterList.get(), other.queryParameterList.get());
+            return queryParameterList.equals(other.queryParameterList);
         } else {
             return false;
         }
