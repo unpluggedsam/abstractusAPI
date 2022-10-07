@@ -13,7 +13,7 @@ import com.squareup.okhttp.Request;
 public class Query {
 
     @SuppressWarnings("OptionalUsedAsFieldOrParameterType")
-    private List<Optional<QueryParameter>> queryParameterList;
+    private List<Optional<QueryParameter>> queryParameterList = new ArrayList<>();
     private final URL url;
 
     /**
@@ -38,8 +38,7 @@ public class Query {
         return builder;
     }
 
-    public Query(URL url, QueryParameter... queryParameterList) {
-        this.queryParameterList = new ArrayList(Arrays.stream(queryParameterList).toList());
+    public Query(URL url) {
         this.url = url;
     }
 

@@ -29,7 +29,8 @@ public class RequestController {
     public CompletableFuture<JSONObject> sendRequest(String endpoint, QueryParameter... params) {
         try {
             URL url = new URL(origin, hostname, endpoint);
-            Query query = new Query(url, params);
+            Query query = new Query(url);
+            query.addParameter(params);
             query.addParameter(setAPIKeyIfPresent());
             return requestFactory.send(query);
         } catch (MalformedURLException e) {
