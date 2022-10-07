@@ -28,13 +28,14 @@ public class RequestFactory {
     }
 
     public CompletableFuture<JSONObject> send(Query query) {
-        Request request = new Request.Builder().build();
+        Request request = new Request.Builder().url(query.createRequest().build()).build();
 
         return CompletableFuture.supplyAsync(() -> {
             try {
                 Response response = client.newCall(request).execute();
-                if(validator.validate(response, new JSONObject(response.body().string()))) {
-                    return new JSONObject(Objects.requireNonNull(response.body()).string());
+                JSONObject object = new JSONObject(response.body().string());
+                if(validator.validate(response, object)) {
+                    return object;
                 } else {
                     CompletableFuture.failedFuture(new Throwable("Failure"));
                 }
