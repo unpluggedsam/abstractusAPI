@@ -2,6 +2,7 @@ package abstractusAPI.http.request;
 
 import abstractusAPI.http.query.Query;
 import abstractusAPI.http.query.QueryParameter;
+import okhttp3.OkHttpClient;
 import org.json.JSONObject;
 
 import java.net.MalformedURLException;
@@ -25,9 +26,28 @@ public class RequestController {
         this.requestFactory = new RequestFactory();
     }
 
+    public RequestController(String origin, String hostname, OkHttpClient client) {
+        this.origin = origin;
+        this.hostname = hostname;
+        this.requestFactory = new RequestFactory(client);
+    }
+
+    public RequestController(String origin, String hostname, RequestValidator validator) {
+        this.origin = origin;
+        this.hostname = hostname;
+        this.requestFactory = new RequestFactory(validator);
+    }
+
+    public RequestController(String origin, String hostname, OkHttpClient client, RequestValidator validator) {
+        this.origin = origin;
+        this.hostname = hostname;
+        this.requestFactory = new RequestFactory(client, validator);
+    }
+
+
     public CompletableFuture<JSONObject> sendRequestAsync(String endpoint, QueryParameter... params) {
         try {
-            URL url = new URL(origin, hostname, endpoint);
+            URL url = new URL(origin, hostname, "/" + endpoint);
             Query query = new Query(url);
             query.addParameter(params);
             query.addParameter(setAPIKeyIfPresent());
@@ -39,7 +59,7 @@ public class RequestController {
 
     public CompletableFuture<JSONObject> sendRequestAsync(String endpoint) {
         try {
-            URL url = new URL(origin, hostname, endpoint);
+            URL url = new URL(origin, hostname, "/" + endpoint);
             Query query = new Query(url);
             query.addParameter(setAPIKeyIfPresent());
             return requestFactory.sendAsync(query);
@@ -48,21 +68,12 @@ public class RequestController {
         }
     }
 
-    /**
-     * Delegates call to requestFactory.
-     *
-     * @param requestValidator The request validator that will be used to validate the request.
-     */
-    public void setRequestValidator(RequestValidator requestValidator) {
-        requestFactory.setRequestValidator(requestValidator);
-    }
-
     public void setApiKey(UUID apiKey) {
         this.apiKey = apiKey;
     }
 
     private QueryParameter setAPIKeyIfPresent() {
-        if(apiKey != null) {
+        if (apiKey != null) {
             return new QueryParameter("key", apiKey.toString());
         } else {
             return null;

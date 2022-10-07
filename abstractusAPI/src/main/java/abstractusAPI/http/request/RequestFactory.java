@@ -1,11 +1,13 @@
 package abstractusAPI.http.request;
 
 import abstractusAPI.http.query.Query;
+import okhttp3.Cache;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 import org.json.JSONObject;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.CompletableFuture;
 
@@ -14,20 +16,43 @@ import java.util.concurrent.CompletableFuture;
  */
 public class RequestFactory {
 
-    private OkHttpClient client;
-    private RequestValidator validator;
+    private final OkHttpClient client;
+    private final RequestValidator validator;
 
     protected RequestFactory() {
         this.validator = new BasicRequestValidator();
+        this.client = getClient();
     }
 
-    public void setRequestValidator(RequestValidator validator) {
-        this.validator = validator;
-        client = new OkHttpClient();
+    protected RequestFactory(OkHttpClient client) {
+        this.client = client;
+        this.validator = new BasicRequestValidator();
     }
+
+    protected RequestFactory(RequestValidator validator) {
+        this.validator = validator;
+        this.client = getClient();
+    }
+
+    protected RequestFactory(OkHttpClient client, RequestValidator validator) {
+        this.client = client;
+        this.validator = validator;
+    }
+
+    private OkHttpClient getClient() {
+        File httpCacheDirectory = new File("./cacheDir", "http-cache");
+        int cacheSize = 10 * 1024 * 1024; // 10 MiB
+        Cache cache = new Cache(httpCacheDirectory, cacheSize);
+        return new OkHttpClient.Builder()
+                .addNetworkInterceptor(new CacheInterceptor())
+                .cache(cache)
+                .build();
+    }
+
 
     /**
      * Sends a request to the API. Processes the results asynchronously.
+     *
      * @param query The {@link Query} containing all information about the request.
      * @return A {@link CompletableFuture} containing a {@link JSONObject} with the returned data.
      */
@@ -38,7 +63,7 @@ public class RequestFactory {
             try {
                 Response response = client.newCall(request).execute();
                 JSONObject object = new JSONObject(response.body().string());
-                if(validator.validate(response, object)) {
+                if (validator.validate(response, object)) {
                     return object;
                 } else {
                     CompletableFuture.failedFuture(new Throwable("Failure"));
