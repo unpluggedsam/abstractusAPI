@@ -1,6 +1,6 @@
 package abstractusAPI.http.request;
 
-import com.squareup.okhttp.Response;
+import okhttp3.Response;
 import org.json.JSONObject;
 
 /**

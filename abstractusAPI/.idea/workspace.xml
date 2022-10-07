@@ -6,9 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="1ed53b89-3a0b-4d20-b2f0-8719403d29f2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/abstractusAPI/http/request/RequestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/abstractusAPI/http/request/RequestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/abstractusAPI/http/request/RequestFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/abstractusAPI/http/request/RequestFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/abstractusAPI/http/request/RequestValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/abstractusAPI/http/request/RequestValidator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,14 +34,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/Java Projects/GitHub/abstractusAPI/abstractusAPI"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Java Projects/GitHub/abstractusAPI/abstractusAPI&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="abstractusAPI.Test" />

@@ -3,7 +3,8 @@ package abstractusAPI.http.request;
 import abstractusAPI.exception.client_error.*;
 import abstractusAPI.exception.server_error.*;
 import abstractusAPI.exception.server_error.HTTPVersionNotSupportedException;
-import com.squareup.okhttp.Response;
+
+import okhttp3.Response;
 import org.json.JSONObject;
 
 /**

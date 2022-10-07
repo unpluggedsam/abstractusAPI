@@ -3,8 +3,8 @@ package abstractusAPI.http.query;
 import java.net.URL;
 import java.util.*;
 
-import com.squareup.okhttp.HttpUrl;
-import com.squareup.okhttp.Request;
+import okhttp3.HttpUrl;
+import okhttp3.Request;
 
 
 /**
@@ -28,13 +28,13 @@ public class Query {
      * caller can attach any additional information it needs to the request, such as a user-agent or
      * API credentials.
      */
-    public HttpUrl.Builder createRequest() {
-        HttpUrl.Builder builder = Objects.requireNonNull(HttpUrl.get(url)
+    public HttpUrl createRequest() {
+        HttpUrl.Builder builder = Objects.requireNonNull(Objects.requireNonNull(HttpUrl.get(url))
                 .newBuilder());
         queryParameterList.forEach(queryParameters -> queryParameters.ifPresent(param -> {
             builder.addQueryParameter(param.key(), param.value());
         }));
-        return builder;
+        return builder.build();
     }
 
     public Query(URL url) {

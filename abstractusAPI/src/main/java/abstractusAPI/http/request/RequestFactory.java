@@ -1,9 +1,9 @@
 package abstractusAPI.http.request;
 
 import abstractusAPI.http.query.Query;
-import com.squareup.okhttp.OkHttpClient;
-import com.squareup.okhttp.Request;
-import com.squareup.okhttp.Response;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -14,7 +14,7 @@ import java.util.concurrent.CompletableFuture;
  */
 public class RequestFactory {
 
-    private final OkHttpClient client = new OkHttpClient();
+    private OkHttpClient client;
     private RequestValidator validator;
 
     protected RequestFactory() {
@@ -23,6 +23,7 @@ public class RequestFactory {
 
     public void setRequestValidator(RequestValidator validator) {
         this.validator = validator;
+        client = new OkHttpClient();
     }
 
     /**
@@ -31,7 +32,7 @@ public class RequestFactory {
      * @return A {@link CompletableFuture} containing a {@link JSONObject} with the returned data.
      */
     public CompletableFuture<JSONObject> sendAsync(Query query) {
-        Request request = new Request.Builder().url(query.createRequest().build()).build();
+        Request request = new Request.Builder().url(query.createRequest()).build();
 
         return CompletableFuture.supplyAsync(() -> {
             try {
