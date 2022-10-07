@@ -9,6 +9,7 @@ import org.json.JSONObject;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 
 /**
@@ -47,6 +48,14 @@ public class RequestFactory {
                 .addNetworkInterceptor(new CacheInterceptor())
                 .cache(cache)
                 .build();
+    }
+
+    public void clearCache() {
+        try {
+            Objects.requireNonNull(client.cache()).evictAll();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 

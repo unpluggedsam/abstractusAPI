@@ -68,6 +68,10 @@ public class RequestController {
         }
     }
 
+    public void clearCache() {
+        requestFactory.clearCache();
+    }
+
     public void setApiKey(UUID apiKey) {
         this.apiKey = apiKey;
     }
