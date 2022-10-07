@@ -12,8 +12,7 @@ import com.squareup.okhttp.Request;
  */
 public class Query {
 
-    @SuppressWarnings("OptionalUsedAsFieldOrParameterType")
-    private List<Optional<QueryParameter>> queryParameterList = new ArrayList<>();
+    private final List<Optional<QueryParameter>> queryParameterList = new ArrayList<>();
     private final URL url;
 
     /**
