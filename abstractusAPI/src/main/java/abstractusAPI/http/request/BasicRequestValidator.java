@@ -6,6 +6,10 @@ import abstractusAPI.exception.server_error.HTTPVersionNotSupportedException;
 import com.squareup.okhttp.Response;
 import org.json.JSONObject;
 
+/**
+ * Basic implementation of {@link RequestValidator}. Handles most
+ * status codes that can be returned from an API.
+ */
 public class BasicRequestValidator implements RequestValidator {
 
 

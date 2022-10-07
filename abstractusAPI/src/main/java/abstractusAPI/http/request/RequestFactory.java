@@ -7,8 +7,6 @@ import com.squareup.okhttp.Response;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.util.Objects;
-import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 
 /**
@@ -27,7 +25,12 @@ public class RequestFactory {
         this.validator = validator;
     }
 
-    public CompletableFuture<JSONObject> send(Query query) {
+    /**
+     * Sends a request to the API. Processes the results asynchronously.
+     * @param query The {@link Query} containing all information about the request.
+     * @return A {@link CompletableFuture} containing a {@link JSONObject} with the returned data.
+     */
+    public CompletableFuture<JSONObject> sendAsync(Query query) {
         Request request = new Request.Builder().url(query.createRequest().build()).build();
 
         return CompletableFuture.supplyAsync(() -> {

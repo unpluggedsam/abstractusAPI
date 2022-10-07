@@ -6,7 +6,6 @@ import org.json.JSONObject;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 
@@ -26,24 +25,24 @@ public class RequestController {
         this.requestFactory = new RequestFactory();
     }
 
-    public CompletableFuture<JSONObject> sendRequest(String endpoint, QueryParameter... params) {
+    public CompletableFuture<JSONObject> sendRequestAsync(String endpoint, QueryParameter... params) {
         try {
             URL url = new URL(origin, hostname, endpoint);
             Query query = new Query(url);
             query.addParameter(params);
             query.addParameter(setAPIKeyIfPresent());
-            return requestFactory.send(query);
+            return requestFactory.sendAsync(query);
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public CompletableFuture<JSONObject> sendRequest(String endpoint) {
+    public CompletableFuture<JSONObject> sendRequestAsync(String endpoint) {
         try {
             URL url = new URL(origin, hostname, endpoint);
             Query query = new Query(url);
             query.addParameter(setAPIKeyIfPresent());
-            return requestFactory.send(query);
+            return requestFactory.sendAsync(query);
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         }
