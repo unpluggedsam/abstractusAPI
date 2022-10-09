@@ -87,7 +87,7 @@ public class RequestController {
         queryParameters.add(parameter);
     }
 
-    public void removePermanentQueryParameter(QueryParameter parameter {
+    public void removePermanentQueryParameter(QueryParameter parameter) {
         queryParameters.remove(parameter);
     }
 }
