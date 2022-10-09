@@ -41,7 +41,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-TODO
+target/AbstractusAPI.jar
 
 ## Getting Started
 
