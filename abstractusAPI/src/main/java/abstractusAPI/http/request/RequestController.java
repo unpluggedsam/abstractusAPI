@@ -5,8 +5,11 @@ import abstractusAPI.http.query.QueryParameter;
 import okhttp3.OkHttpClient;
 import org.json.JSONObject;
 
+import java.lang.reflect.Parameter;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 
@@ -15,7 +18,7 @@ import java.util.concurrent.CompletableFuture;
  */
 public class RequestController {
 
-    private UUID apiKey;
+    private final List<QueryParameter> queryParameters = new ArrayList<>();
     private final String origin;
     private final String hostname;
     private final RequestFactory requestFactory;
@@ -50,7 +53,7 @@ public class RequestController {
             URL url = new URL(origin, hostname, "/" + endpoint);
             Query query = new Query(url);
             query.addParameter(params);
-            query.addParameter(setAPIKeyIfPresent());
+            query.addParameter(queryParameters.toArray(new QueryParameter[queryParameters.size()]));
             return requestFactory.sendAsync(query);
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
@@ -61,7 +64,7 @@ public class RequestController {
         try {
             URL url = new URL(origin, hostname, "/" + endpoint);
             Query query = new Query(url);
-            query.addParameter(setAPIKeyIfPresent());
+            query.addParameter(queryParameters.toArray(new QueryParameter[queryParameters.size()]));
             return requestFactory.sendAsync(query);
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
@@ -73,14 +76,18 @@ public class RequestController {
     }
 
     public void setApiKey(UUID apiKey) {
-        this.apiKey = apiKey;
+        addPermanentQueryParameter(new QueryParameter("key", apiKey.toString()));
     }
 
-    private QueryParameter setAPIKeyIfPresent() {
-        if (apiKey != null) {
-            return new QueryParameter("key", apiKey.toString());
-        } else {
-            return null;
-        }
+    /**
+     * Adds a parameter to every request being made.
+     * @param parameter The parameter to add.
+     */
+    public void addPermanentQueryParameter(QueryParameter parameter) {
+        queryParameters.add(parameter);
+    }
+
+    public void removePermanentQueryParameter(QueryParameter parameter {
+        queryParameters.remove(parameter);
     }
 }
