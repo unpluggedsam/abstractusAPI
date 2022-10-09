@@ -72,12 +72,12 @@ This project supports automatic 15 minute caching using `OkHttp3` built in cachi
 `RequestController` constructor with all configurations customized. To see more about implementing your own cache read more
 <a href = "https://square.github.io/okhttp/3.x/okhttp/okhttp3/Cache.html"> here. </a> 
 
-### Personalized error handling
+### Customized Error Handling
 This project comes with a basic error handling process. It handles and throws 40+ custom exceptions depending on the status code returned from the API. 
 If you would like to create your own validation process simply create a class the implements the `RequestValidator` interface pass it in as a parameter to 
 the `RequestController` constructor.
 
-### Adding parameters
+### Adding Parameters
 To add parameters to the request use the `RequestParameter` record. It takes in a key and value in it's constructor. Then, when calling the 
 `sendRequestAsync` method of `RequestController` add the `RequestParameter` as a parameter.
 ``` Java
