@@ -1,5 +1,6 @@
 package abstractusAPI.http.request;
 
+import abstractusAPI.cache.CacheInterceptor;
 import abstractusAPI.http.query.Query;
 import okhttp3.Cache;
 import okhttp3.OkHttpClient;

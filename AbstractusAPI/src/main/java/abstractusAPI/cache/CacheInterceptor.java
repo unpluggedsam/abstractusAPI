@@ -1,4 +1,4 @@
-package abstractusAPI.http.request;
+package abstractusAPI.cache;
 
 import okhttp3.CacheControl;
 import okhttp3.Interceptor;
