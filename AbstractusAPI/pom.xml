@@ -1,8 +1,8 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>org.example</groupId>
-  <artifactId>abstractusAPI</artifactId>
+  <groupId>com.github.AbstractusAPI</groupId>
+  <artifactId>AbstractusAPI</artifactId>
   <packaging>jar</packaging>
   <version>1.0-SNAPSHOT</version>
   <build>
@@ -17,8 +17,19 @@
       </plugin>
     </plugins>
   </build>
-  <name>abstractusAPI</name>
+  <name>AbstractusAPI</name>
   <url>http://maven.apache.org</url>
+
+
+  <distributionManagement>
+    <repository>
+      <id>github</id>
+      <name>unpluggedsam990</name>
+      <url>https://github.com/unpluggedsam/AbstractusAPI</url>
+    </repository>
+  </distributionManagement>
+
+
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
