@@ -25,15 +25,6 @@
     <name>AbstractusAPI</name>
     <url>https://github.com/unpluggedsam/AbstractusAPI</url>
 
-    <developers>
-        <licenses>
-            <license>
-                <name>MIT License</name>
-                <url>http://www.opensource.org/licenses/mit-license.php</url>
-            </license>
-        </licenses>
-    </developers>
-
     <distributionManagement>
         <repository>
             <id>github</id>
