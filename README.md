@@ -3,49 +3,10 @@
 This project's goal is to provide an easier way to write API wrappers in Java. It abstracts away the implementation details of making calls to the API 
 and allows you to retrieve the data in a simple and safe way.
 
-## Requirements
-
-Building the API client library requires [Maven](https://maven.apache.org/) to be installed.
-
-## Installation
-
-To install the API client library to your local Maven repository, simply execute:
-
-```shell
-mvn install 
-```
-
-Refer to the [official documentation](https://maven.apache.org/plugins/maven-deploy-plugin/usage.html) for more information.
-
-### Maven users
-
-Add this dependency to your project's POM:
-
-```xml
-TODO
-```
-
-### Gradle users
-
-Add this dependency to your project's build file:
-
-```groovy
-TODO
-```
-
-### Others
-
-At first generate the JAR by executing:
-
-    mvn package
-
-Then manually install the following JARs:
-
-target/AbstractusAPI.jar
 
 ## Getting Started
 
-Please follow the [installation](#installation) instruction and execute the following Java code:
+Download the project as a JAR and execute the following Java code:
 
 ```java
 
