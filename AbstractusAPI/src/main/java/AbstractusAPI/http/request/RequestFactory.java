@@ -20,6 +20,7 @@ public class RequestFactory {
 
     private final OkHttpClient client;
     private final RequestValidator validator;
+    private boolean autoClearCache;
 
     protected RequestFactory() {
         this.validator = new BasicRequestValidator();
@@ -39,6 +40,10 @@ public class RequestFactory {
     protected RequestFactory(OkHttpClient client, RequestValidator validator) {
         this.client = client;
         this.validator = validator;
+    }
+
+    protected void setAutoClearCache(boolean autoClear) {
+        this.autoClearCache = autoClear;
     }
 
     private OkHttpClient getClient() {
@@ -68,6 +73,8 @@ public class RequestFactory {
      */
     public CompletableFuture<JSONObject> sendAsync(Query query) {
         Request request = new Request.Builder().url(query.createRequest()).build();
+
+        if(autoClearCache) clearCache();
 
         return CompletableFuture.supplyAsync(() -> {
             try {

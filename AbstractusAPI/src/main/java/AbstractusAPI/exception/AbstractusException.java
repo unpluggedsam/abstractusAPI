@@ -10,6 +10,7 @@ public class AbstractusException extends RuntimeException {
 
     private final int errorCode;
 
+
     public AbstractusException(String message, int errorCode) {
         this.message = message;
         this.errorCode = errorCode;
