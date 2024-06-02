@@ -1,5 +1,6 @@
 package AbstractusAPI.http.request;
 
+import AbstractusAPI.http.query.Endpoint;
 import AbstractusAPI.http.query.Query;
 import AbstractusAPI.http.query.QueryParameter;
 import okhttp3.OkHttpClient;
@@ -47,10 +48,6 @@ public class RequestController {
         this.requestFactory = new RequestFactory(client, validator);
     }
 
-    public static String createPath(String... path) {
-        return "/" + String.join("/", path);
-    }
-
     public void setAutoClearCache(boolean autoClear) {
         requestFactory.setAutoClearCache(autoClear);
     }
@@ -79,11 +76,11 @@ public class RequestController {
     }
 
 
-    public CompletableFuture<JSONObject> sendRequestAsync(String endpoint, QueryParameter... params) {
+    public CompletableFuture<JSONObject> sendRequestAsync(Endpoint endpoint, QueryParameter... params) {
         try {
 
             // Create the URL object
-            URL url = new URL(origin, hostname, endpoint);
+            URL url = new URL(origin, hostname, endpoint.getPath());
 
             // Create and configure the Query object
             Query query = new Query(url);
@@ -97,9 +94,9 @@ public class RequestController {
         }
     }
 
-    public CompletableFuture<JSONObject> sendRequestAsync(String endpoint) {
+    public CompletableFuture<JSONObject> sendRequestAsync(Endpoint endpoint) {
         try {
-            URL url = new URL(origin, hostname, "/" + endpoint);
+            URL url = new URL(origin, hostname, endpoint.getPath());
             Query query = new Query(url);
             query.addParameter(queryParameters.toArray(new QueryParameter[0]));
             return requestFactory.sendAsync(query);
