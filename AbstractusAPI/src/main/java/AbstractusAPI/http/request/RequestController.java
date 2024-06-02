@@ -22,6 +22,12 @@ public class RequestController {
     private final String hostname;
     private final RequestFactory requestFactory;
 
+    public static String createPath(String... path) {
+        return "/" + String.join("/", path);
+    }
+
+
+
     public RequestController(String origin, String hostname) {
         this.origin = origin;
         this.hostname = hostname;
@@ -46,13 +52,42 @@ public class RequestController {
         this.requestFactory = new RequestFactory(client, validator);
     }
 
+    public CompletableFuture<JSONObject> sendRequestAsync() {
+        try {
+            URL url = new URL(origin, hostname, "/");
+            Query query = new Query(url);
+            query.addParameter(queryParameters.toArray(new QueryParameter[0]));
+            return requestFactory.sendAsync(query);
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public CompletableFuture<JSONObject> sendRequestAsync(QueryParameter... params) {
+        try {
+            URL url = new URL(origin, hostname, "/");
+            Query query = new Query(url);
+            query.addParameter(params);
+            query.addParameter(queryParameters.toArray(new QueryParameter[0]));
+            return requestFactory.sendAsync(query);
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
     public CompletableFuture<JSONObject> sendRequestAsync(String endpoint, QueryParameter... params) {
         try {
-            URL url = new URL(origin, hostname, "/" + endpoint);
+
+            // Create the URL object
+            URL url = new URL(origin, hostname, endpoint);
+
+            // Create and configure the Query object
             Query query = new Query(url);
             query.addParameter(params);
-            query.addParameter(queryParameters.toArray(new QueryParameter[queryParameters.size()]));
+            query.addParameter(queryParameters.toArray(new QueryParameter[0]));
+
+            // Send the request asynchronously
             return requestFactory.sendAsync(query);
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
@@ -63,7 +98,7 @@ public class RequestController {
         try {
             URL url = new URL(origin, hostname, "/" + endpoint);
             Query query = new Query(url);
-            query.addParameter(queryParameters.toArray(new QueryParameter[queryParameters.size()]));
+            query.addParameter(queryParameters.toArray(new QueryParameter[0]));
             return requestFactory.sendAsync(query);
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
@@ -75,18 +110,18 @@ public class RequestController {
     }
 
     public void setApiKey(UUID apiKey) {
-        addPermanentQueryParameter(new QueryParameter("key", apiKey.toString()));
+        addQueryParameter(new QueryParameter("key", apiKey.toString()));
     }
 
     /**
      * Adds a parameter to every request being made.
      * @param parameter The parameter to add.
      */
-    public void addPermanentQueryParameter(QueryParameter parameter) {
+    public void addQueryParameter(QueryParameter parameter) {
         queryParameters.add(parameter);
     }
 
-    public void removePermanentQueryParameter(QueryParameter parameter) {
+    public void removeQueryParameter(QueryParameter parameter) {
         queryParameters.remove(parameter);
     }
 }
