@@ -10,7 +10,11 @@ Download the project as a JAR and execute the following Java code:
 
 ```java
 
-import abstractusAPI.http.request.RequestController;
+package AbstractusAPI;
+
+import AbstractusAPI.http.query.Endpoint;
+import AbstractusAPI.http.query.QueryParameter;
+import AbstractusAPI.http.request.RequestController;
 import org.json.JSONObject;
 
 import java.util.concurrent.CompletableFuture;
@@ -19,10 +23,11 @@ import java.util.concurrent.ExecutionException;
 public class Test {
     public static void main(String[] args) throws ExecutionException, InterruptedException {
         RequestController requestController = new RequestController("https", "v2.jokeapi.dev");
-        CompletableFuture<JSONObject> jsonObject = requestController.sendRequestAsync("joke/any");
-        System.out.println(jsonObject.get());
+        CompletableFuture<JSONObject> jsonObject = requestController.sendRequestAsync(new Endpoint("joke", "any"));
+        System.out.println(jsonObject.get());;
     }
 }
+
 
 ```
 
@@ -39,10 +44,14 @@ If you would like to create your own validation process simply create a class th
 the `RequestController` constructor.
 
 ### Adding Parameters
-To add parameters to the request use the `RequestParameter` record. It takes in a key and value in it's constructor. Then, when calling the 
+To add parameters to the request use the `QueryParameter` record. It takes in a key and value in it's constructor. Then, when calling the 
 `sendRequestAsync` method of `RequestController` add the `RequestParameter` as a parameter.
 ``` Java
-import abstractusAPI.http.request.RequestController;
+package AbstractusAPI;
+
+import AbstractusAPI.http.query.Endpoint;
+import AbstractusAPI.http.query.QueryParameter;
+import AbstractusAPI.http.request.RequestController;
 import org.json.JSONObject;
 
 import java.util.concurrent.CompletableFuture;
@@ -51,19 +60,24 @@ import java.util.concurrent.ExecutionException;
 public class Test {
     public static void main(String[] args) throws ExecutionException, InterruptedException {
         RequestController requestController = new RequestController("https", "v2.jokeapi.dev");
-        CompletableFuture<JSONObject> jsonObject = requestController.sendRequestAsync("joke/any", new RequestParameter("amount", "6");
+        CompletableFuture<JSONObject> jsonObject = requestController.sendRequestAsync(new Endpoint("joke", "any"), new QueryParameter("amount", "6"));
         System.out.println(jsonObject.get());
     }
 }
+
 
 ```
 
 ### Setting Permanent Parameters
-This project also supports adding permanent parameters that will be added to each request. This can be useful when working with API keys. Simply call, 
-`RequestController.addPermanentQueryParameter()` and pass in the `QueryParameter` that should be added. 
+This project also supports adding permanent parameters that will be added to each request.  Simply call, 
+`RequestController.addQueryParameter()` and pass in the `QueryParameter` that should be added. 
 
 ``` Java
-import abstractusAPI.http.request.RequestController;
+package AbstractusAPI;
+
+import AbstractusAPI.http.query.Endpoint;
+import AbstractusAPI.http.query.QueryParameter;
+import AbstractusAPI.http.request.RequestController;
 import org.json.JSONObject;
 
 import java.util.concurrent.CompletableFuture;
@@ -72,11 +86,12 @@ import java.util.concurrent.ExecutionException;
 public class Test {
     public static void main(String[] args) throws ExecutionException, InterruptedException {
         RequestController requestController = new RequestController("https", "v2.jokeapi.dev");
-        requestController.addPermanentRequestParameter("key", UUID.randomUUID().toString());
-        CompletableFuture<JSONObject> jsonObject = requestController.sendRequestAsync("joke/any", new RequestParameter("amount", "6");
+        requestController.addQueryParameter(new QueryParameter("amount", "6"));
+        CompletableFuture<JSONObject> jsonObject = requestController.sendRequestAsync(new Endpoint("joke", "any"));
         System.out.println(jsonObject.get());
     }
 }
+
 
 ```
 
@@ -86,7 +101,11 @@ To asynchronously process the results there are many options since the `RequestC
 A simple way is to create a new thread and process the results in it. 
 
 ``` Java
-import abstractusAPI.http.request.RequestController;
+package AbstractusAPI;
+
+import AbstractusAPI.http.query.Endpoint;
+import AbstractusAPI.http.query.QueryParameter;
+import AbstractusAPI.http.request.RequestController;
 import org.json.JSONObject;
 
 import java.util.concurrent.CompletableFuture;
@@ -99,7 +118,7 @@ public class Test {
 
         new Thread(() -> {
             try {
-                CompletableFuture<JSONObject> future = requestController.sendRequestAsync("joke/any");
+                CompletableFuture<JSONObject> future = requestController.sendRequestAsync(new Endpoint("joke", "any"));
                 System.out.println(future.get());
             } catch (InterruptedException | ExecutionException e) {
                 e.printStackTrace();
@@ -107,6 +126,7 @@ public class Test {
         }).start();
     }
 }
+
 ```
 
 
