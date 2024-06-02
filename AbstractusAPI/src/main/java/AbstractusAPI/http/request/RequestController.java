@@ -22,11 +22,6 @@ public class RequestController {
     private final String hostname;
     private final RequestFactory requestFactory;
 
-    public static String createPath(String... path) {
-        return "/" + String.join("/", path);
-    }
-
-
 
     public RequestController(String origin, String hostname) {
         this.origin = origin;
@@ -50,6 +45,14 @@ public class RequestController {
         this.origin = origin;
         this.hostname = hostname;
         this.requestFactory = new RequestFactory(client, validator);
+    }
+
+    public static String createPath(String... path) {
+        return "/" + String.join("/", path);
+    }
+
+    public void setAutoClearCache(boolean autoClear) {
+        requestFactory.setAutoClearCache(autoClear);
     }
 
     public CompletableFuture<JSONObject> sendRequestAsync() {
